@@ -53,5 +53,7 @@ public class Transaction {
         return date;
     }
 
-    // TODO (JAV-1): add  public boolean isValidType()  that is true only for 'D', 'W' and 'T'.
+    public boolean isValidType() {
+        return type == 'D' || type == 'W' || type == 'T';
+    }
 }
