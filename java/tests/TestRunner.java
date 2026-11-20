@@ -17,7 +17,7 @@ public class TestRunner {
 
     public static void main(String[] args) {
         testParsesFields();
-        // TODO (JAV-1): add testIsValidType() and call it here
+        testIsValidType();
         System.out.println("Java tests: " + passed + " passed, " + failed + " failed");
         System.exit(failed == 0 ? 0 : 1);
     }
@@ -28,5 +28,12 @@ public class TestRunner {
         check("type", t.getType() == 'D');
         check("amount in cents", t.getAmountCents() == 12550);
         check("date", t.getDate().equals("20261120"));
+    }
+
+    static void testIsValidType() {
+        check("D is valid", new Transaction("ACCT0001", 'D', 100, "20261120").isValidType());
+        check("W is valid", new Transaction("ACCT0001", 'W', 100, "20261120").isValidType());
+        check("T is valid", new Transaction("ACCT0001", 'T', 100, "20261120").isValidType());
+        check("X is invalid", !new Transaction("ACCT0001", 'X', 100, "20261120").isValidType());
     }
 }
