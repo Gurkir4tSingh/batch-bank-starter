@@ -1,0 +1,5 @@
+# Keep line endings the same on Windows and Mac so fixed-width records never change length.
+*.dat text eol=lf
+*.py text eol=lf
+*.java text eol=lf
+*.md text eol=lf
